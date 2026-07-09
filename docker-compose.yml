@@ -1,0 +1,14 @@
+services:
+  fusion_server:
+    image: ruby:3.3
+    container_name: fusion_server
+    restart: unless-stopped
+    working_dir: /app/KIFM
+    ports:
+      - "12975:12975"
+    volumes:
+      - ./app:/app
+    tty: true
+    stdin_open: true
+    command: bash -c "printf '1\n' | ruby server.rb"
+
